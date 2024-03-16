@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Sign Up Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .signup-form {
+      background-color: #fff;
+      padding: 25px 60px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    .signup-form h1 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .signup-form label {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .signup-form input[type="text"],
+    .signup-form input[type="password"],
+    .signup-form input[type="email"],
+    .signup-form input[type="tel"],
+    .signup-form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 18px;
+    }
+    .signup-form input[type="password"] {
+      margin-bottom: 5px;
+    }
+    .signup-form button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .signup-form button:hover {
+      background-color: #0056b3;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+        <a href="index.html">Movie-Hub</a>
+    </div>
+    <div class="buttons">
+        <button onclick="Sign()">Sign Up</button>
+        <button onclick="Login()">Login</button>
+    </div>
+</nav>
+
+  <div class="container">
+    <div class="signup-form">
+      <h1>Sign Up Form</h1>
+      <form id="signupForm" action="#" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <label for="repassword">Re-enter Password</label>
+        <input type="password" id="repassword" name="repassword" placeholder="Re-enter your password" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+
+        <button type="submit" id="submitBtn">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const repassword = document.getElementById('repassword');
+    const email = document.getElementById('email');
+    const mobile = document.getElementById('mobile');
+    const submitBtn = document.getElementById('submitBtn');
+  
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (validateForm()) {
+        alert('Sign Up Successful!');
+      }
+    });
+  
+    function validateForm() {
+      let isValid = true;
+      const errorMessage = document.createElement('div');
+      errorMessage.classList.add('error-message');
+      form.appendChild(errorMessage);
+      errorMessage.innerHTML = '';
+  
+      // Username validation
+      if (!/^[a-z]+$/.test(username.value)) {
+        errorMessage.innerHTML += 'Username must contain only lowercase letters.<br>';
+        isValid = false;
+        username.style.borderColor = 'red'; // Change border color to red
+      } else {
+        username.style.borderColor = ''; // Reset border color
+      }
+  
+      // Password validation
+      if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}/.test(password.value)) {
+        errorMessage.innerHTML += 'Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long.<br>';
+        isValid = false;
+        password.style.borderColor = 'red'; // Change border color to red
+      } else {
+        password.style.borderColor = ''; // Reset border color
+      }
+  
+      // Re-enter password validation
+      if (password.value !== repassword.value) {
+        errorMessage.innerHTML += 'Passwords do not match.<br>';
+        isValid = false;
+        repassword.style.borderColor = 'red'; 
+      } else {
+        repassword.style.borderColor = ''; 
+      }
+  
+      
+      if (!/@gitam.in$/.test(email.value)) {
+        errorMessage.innerHTML += 'Email must have ".gitam.in" domain.<br>';
+        isValid = false;
+        email.style.borderColor = 'red'; // Change border color to red
+      } else {
+        email.style.borderColor = ''; // Reset border color
+      }
+  
+      // Mobile number validation
+      if (!/^\d{10}$/.test(mobile.value)) {
+        errorMessage.innerHTML += 'Mobile number must be 10 digits long.<br>';
+        isValid = false;
+        mobile.style.borderColor = 'red'; // Change border color to red
+      } else {
+        mobile.style.borderColor = ''; // Reset border color
+      }
+  
+      return isValid;
+    }
+
+    function Sign() {
+        
+        window.location.href = "signup.html";
+    }
+
+    function Login() {
+        
+        window.location.href = "login.html";
+    }
+
+  </script>
+  
+</body>
+</html>

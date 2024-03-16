@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="index.css"> 
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html">Movie-Hub</a>
+    </div>
+    <div class="search">
+        <input type="text" placeholder="Search...">
+    </div>
+    <div class="location" id="location">
+        <select>
+            <option value="location1">Vizag</option>
+            <option value="location2">Hyderabad</option>
+            <option value="location3">Mumbai</option>
+            <option value="location4">Pune</option>
+            <option value="location5">Chennai</option>
+            
+        </select>
+    </div>
+    <div class="buttons">
+        <button onclick="Sign()">Sign Up</button>
+        <button onclick="Login()">Login</button>
+    </div>
+</nav>
+
+<h1>Now Showing</h1>
+
+<div class="movie-tiles">
+    
+    <div class="tile">
+        <img src="/images/movie1.jpg" alt="Movie 1">
+        <h2>Movie 1</h2>
+        <p>Description of Movie 1</p>
+        <button onclick="redirectToBooking()">Book Now</button>
+    </div>
+    <div class="tile">
+        <img src="/images/movie2.jpg" alt="Movie 2">
+        <h2>Movie 2</h2>
+        <p>Description of Movie 2</p>
+        <button onclick="redirectToBooking()">Book Now</button>
+    </div>
+    <div class="tile">
+        <img src="/images/movie3.jpg" alt="Movie 3">
+        <h2>Movie 3</h2>
+        <p>Description of Movie 3</p>
+        <button onclick="redirectToBooking()">Book Now</button>
+    </div>
+    <div class="tile">
+        <img src="/images/movie4.jpg" alt="Movie 4">
+        <h2>Movie 4</h2>
+        <p>Description of Movie 4</p>
+        <button onclick="redirectToBooking()">Book Now</button>
+    </div>
+    
+    <div class="tile">
+        <img src="/images/movie5.jpg" alt="Movie 5">
+        <h2>Movie 5</h2>
+        <p>Description of Movie 5</p>
+        <button onclick="redirectToBooking()">Book Now</button>
+    </div>
+    <div class="tile">
+        <img src="/images/movie6.jpg" alt="Movie 6">
+        <h2>Movie 6</h2>
+        <p>Description of Movie 6</p>
+        <button onclick="redirectToBooking()">Book Now</button>
+    </div>
+</div>
+
+<script>
+    function redirectToBooking() {
+        
+        window.location.href = "book.html";
+    }
+
+    function Sign() {
+        
+        window.location.href = "signup.html";
+    }
+
+    function Login() {
+        
+        window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>

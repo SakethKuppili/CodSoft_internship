@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-form {
+      background-color: #fff;
+      padding: 25px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    .login-form h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    .login-form label {
+      font-weight: bold;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"],
+    .login-form input[type="email"],
+    .login-form input[type="tel"],
+    .login-form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 18px;
+    }
+    .login-form button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+    .login-form button:hover {
+      background-color: #0056b3;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+        <a href="index.html">Movie-Hub</a>
+    </div>
+    <div class="buttons">
+        <button onclick="Sign()">Sign Up</button>
+        <button onclick="Login()">Login</button>
+    </div>
+</nav>
+
+  <div class="container">
+    <div class="login-form">
+      <h1>Login Form</h1>
+      <form id="loginForm" action="#" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit" id="submitBtn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (validateForm()) {
+        alert('Login successful!');
+        
+      }
+    });
+
+    function validateForm() {
+      let isValid = true;
+      const errorMessage = document.createElement('div');
+      errorMessage.classList.add('error-message');
+      form.appendChild(errorMessage);
+      errorMessage.innerHTML = '';
+
+      
+      if (!/^[a-z]+$/.test(username.value)) {
+        errorMessage.innerHTML += 'Username must contain only lowercase letters.<br>';
+        isValid = false;
+      }
+
+      
+      if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}/.test(password.value)) {
+        errorMessage.innerHTML += 'Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long.<br>';
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    function Sign() {
+        
+        window.location.href = "signup.html";
+    }
+
+    function Login() {
+        
+        window.location.href = "login.html";
+    }
+
+  </script>
+</body>
+</html>

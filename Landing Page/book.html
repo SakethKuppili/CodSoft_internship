@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bk {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .bk form {
+            background-color: #fff;
+            padding: 20px 28px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin-top: 150px;
+            text-align: center;
+        }
+
+        .bk h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .bk label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .bk select,
+        .bk input[type="text"],
+        .bk button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .bk button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .bk button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">Movie-Hub</a>
+        </div>
+        <div class="buttons">
+            <button onclick="Sign()">Sign Up</button>
+            <button onclick="Login()">Login</button>
+        </div>
+    </nav>
+
+
+    <div class="bk">
+        <form id="booking-form">
+            <h1>Booking Form</h1>
+            <label for="movie">Movie:</label>
+            <select id="movie" name="movie">
+                <option value="movie1">Movie 1</option>
+                <option value="movie2">Movie 2</option>
+                <option value="movie2">Movie 3</option>
+                <option value="movie2">Movie 4</option>
+                <option value="movie2">Movie 5</option>
+                <option value="movie2">Movie 6</option>
+            </select><br><br>
+            <label for="tickets">Tickets:</label>
+            <select id="tickets" name="tickets">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br><br>
+            <label for="total-price">Total Price:</label>
+            <input type="text" id="total-price" name="total-price" value="₹180/-" readonly><br><br>
+            <button type="button" onclick="bookTickets()">Book</button>
+        </form>
+    </div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ticketsSelect = document.getElementById('tickets');
+            const totalPriceInput = document.getElementById('total-price');
+
+            ticketsSelect.addEventListener('change', function () {
+                const selectedTickets = parseInt(ticketsSelect.value);
+                const ticketPrice = 180;
+                const totalPrice = selectedTickets * ticketPrice;
+                totalPriceInput.value = `₹${totalPrice}/-`;
+            });
+
+
+            ticketsSelect.dispatchEvent(new Event('change'));
+        });
+
+        function bookTickets() {
+            alert("Tickets Booked!");
+        }
+
+        function Sign() {
+
+            window.location.href = "signup.html";
+        }
+
+        function Login() {
+
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>
